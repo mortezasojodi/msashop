@@ -1,6 +1,7 @@
 package com.example.msashop.core.binding
 
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
 

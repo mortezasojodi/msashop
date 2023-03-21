@@ -1,11 +1,11 @@
 package com.example.msashop.core.di
 
 import androidx.room.Room
-import com.example.msashop.core.data.AnimeRepository
+import com.example.msashop.core.data.ProductsRepository
 import com.example.msashop.core.data.source.local.LocalDataSource
 import com.example.msashop.core.data.source.local.room.AnimeDatabase
-import com.example.msashop.core.data.source.remote.RemoteDataSource
-import com.example.msashop.core.data.source.remote.network.ApiService
+import com.example.msashop.core.data.source.remoot.RemoteDataSource
+import com.example.msashop.core.data.source.remoot.network.ApiService
 import com.example.msashop.core.domain.repository.IAnimeRepository
 import com.example.msashop.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
@@ -19,20 +19,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-//val databaseModule = module {
-//    factory { get<AnimeDatabase>().animeDao() }
-//    single {
-//        val passphrase: ByteArray = SQLiteDatabase.getBytes("masscode".toCharArray())
-//        val factory = SupportFactory(passphrase)
-//
-//        Room.databaseBuilder(
-//            androidContext(),
-//            AnimeDatabase::class.java, "Anime.db"
-//        ).fallbackToDestructiveMigration()
-//            .openHelperFactory(factory)
-//            .build()
-//    }
-//}
+val databaseModule = module {
+    factory { get<AnimeDatabase>().animeDao() }
+    single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("masscode".toCharArray())
+        val factory = SupportFactory(passphrase)
+
+        Room.databaseBuilder(
+            androidContext(),
+            AnimeDatabase::class.java, "Anime.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
+    }
+}
 
 val networkModule = module {
     single {
@@ -60,11 +60,11 @@ val networkModule = module {
 }
 
 val repositoryModule = module {
-    single { LocalDataSource(get()) }
+//    single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
     factory { AppExecutors() }
     single<IAnimeRepository> {
-        AnimeRepository(
+        ProductsRepository(
             get(),
             get(),
             get()

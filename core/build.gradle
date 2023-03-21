@@ -1,10 +1,9 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android'
-    id  "kotlin-kapt"
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: "kotlin-kapt"
 apply from: '../shared_dependencies.gradle'
+
 
 android {
     compileSdk 33
@@ -39,7 +38,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation 'androidx.databinding:databinding-common:7.4.2'
+    annotationProcessor "androidx.room:room-compiler:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 //    implementation 'androidx.room:room-coroutines:2.1.0-alpha04'
