@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">msashop</string>
+    <string name="something_wrong">Oops.. something went wrong</string>
+    <string name="no_data">Empty data</string>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <string name="synopsis">Synopsis</string>
+    <string name="details">Details</string>
+    <string name="watch_trailer">Watch Trailer</string>
 </resources>

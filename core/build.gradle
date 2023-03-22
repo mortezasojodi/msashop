@@ -4,31 +4,33 @@ apply plugin: 'kotlin-parcelize'
 apply plugin: "kotlin-kapt"
 apply from: '../shared_dependencies.gradle'
 
-
 android {
-    compileSdk 33
+    compileSdkVersion 33
+//    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        minSdk 21
-        targetSdk 32
+        minSdkVersion 16
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -38,8 +40,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.room:room-runtime:$room_version"
-    implementation 'androidx.databinding:databinding-common:7.4.2'
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 //    implementation 'androidx.room:room-coroutines:2.1.0-alpha04'

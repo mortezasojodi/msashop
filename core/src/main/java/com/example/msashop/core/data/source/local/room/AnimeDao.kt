@@ -10,7 +10,7 @@ interface AnimeDao {
     @Query("SELECT * FROM anime")
     fun getAllAnime(): Flow<List<AnimeEntity>>
 
-    @Query("SELECT * FROM anime where isFavorite = 1")
+    @Query("SELECT * FROM anime")
     fun getFavoriteAnime(): Flow<List<AnimeEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

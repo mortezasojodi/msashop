@@ -11,18 +11,18 @@
         android:name="com.example.msashop.Home.HomeFragment"
         android:label="homeee"
         tools:layout="@layout/fragment_home">
-<!--        <action-->
-<!--            android:id="@+id/action_homeFragment_to_detailAnimeActivity"-->
-<!--            app:destination="@id/detailAnimeActivity" />-->
+        <action
+            android:id="@+id/action_homeFragment_to_detailAnimeActivity"
+            app:destination="@id/detailAnimeActivity" />
     </fragment>
 
-<!--    <activity-->
-<!--        android:id="@+id/detailAnimeActivity"-->
-<!--        android:name="com.example.msashop.Detail.DetailAnimeActivity"-->
-<!--        android:label="fragment_detail_anime"-->
-<!--        tools:layout="@layout/activity_detail_anime">-->
-<!--        <argument-->
-<!--            android:name="Product"-->
-<!--            app:argType="com.example.msashop.core.domain.model.Product" />-->
-<!--    </activity>-->
+    <activity
+        android:id="@+id/detailAnimeActivity"
+        android:name="com.example.msashop.Detail.DetailAnimeActivity"
+        android:label="fragment_detail_anime"
+        tools:layout="@layout/activity_detail_anime">
+        <argument
+            android:name="Product"
+            app:argType="com.example.msashop.core.domain.model.Product" />
+    </activity>
 </navigation>
